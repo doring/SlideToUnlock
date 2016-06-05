@@ -32,7 +32,7 @@ class SlideToUnlockView
 : View(context, attrs, defStyleAttr) {
 
     // TODO change to customize available
-    val DURATION_REWIND = 500L
+    private val DURATION_REWIND = 500L
 
     // TODO all these properties are need to invalidate this view when setter is called
     var text: String
