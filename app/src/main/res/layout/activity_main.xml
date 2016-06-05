@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white"
+                xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.doring.slidetounlock.SlideToUnlockView
+        android:layout_width="240dp"
+        android:layout_height="60dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/shape_stroke_black"
+        app:textColor="@android:color/black"
+        app:textSize="20dp"
+        app:text="Slide To Unlock"
+        app:thumb="@drawable/shape_circle_gray"
+        app:marginThumb="4dp"
+        />
+</RelativeLayout>
