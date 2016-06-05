@@ -12,15 +12,10 @@ Download
 
 Download [the latest JAR][1] or grab via Gradle:
 ```groovy
+repositories {
+    jcenter()
+}
 compile 'com.doring.slidetounlock:slidetounlock:0.1'
-```
-or Maven:
-```xml
-<dependency>
-  <groupId>com.doring.slidetounlock</groupId>
-  <artifactId>slidetounlock</artifactId>
-  <version>0.1</version>
-</dependency>
 ```
 
 
