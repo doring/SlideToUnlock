@@ -38,4 +38,4 @@ License
     limitations under the License.
 
 
- [1]: https://search.maven.org/remote_content?g=com.doring.slidetounlock&a=picasso&v=LATEST
+ [1]: http://jcenter.bintray.com/com/doring/slidetounlock/slidetounlock/0.1.0
