@@ -15,7 +15,7 @@ Download [the latest JAR][1] or grab via Gradle:
 repositories {
     jcenter()
 }
-compile 'com.doring.slidetounlock:slidetounlock:0.1'
+compile 'com.doring.slidetounlock:slidetounlock:0.1.1'
 ```
 or Maven:
 ```xml
