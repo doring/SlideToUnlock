@@ -12,15 +12,10 @@ Download
 
 Download [the latest JAR][1] or grab via Gradle:
 ```groovy
-compile 'com.doring.slidetounlock:slidetounlock:0.1.0'
-```
-or Maven:
-```xml
-<dependency>
-  <groupId>com.doring.slidetounlock</groupId>
-  <artifactId>slidetounlock</artifactId>
-  <version>0.1.0</version>
-</dependency>
+repositories {
+    jcenter()
+}
+compile 'com.doring.slidetounlock:slidetounlock:0.1'
 ```
 
 
@@ -43,4 +38,4 @@ License
     limitations under the License.
 
 
- [1]: https://search.maven.org/remote_content?g=com.doring.slidetounlock&a=picasso&v=LATEST
+ [1]: http://jcenter.bintray.com/com/doring/slidetounlock/slidetounlock/0.1.0
