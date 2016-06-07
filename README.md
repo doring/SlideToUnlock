@@ -17,7 +17,14 @@ repositories {
 }
 compile 'com.doring.slidetounlock:slidetounlock:0.1'
 ```
-
+or Maven:
+```xml
+<dependency>
+  <groupId>com.doring.slidetounlock</groupId>
+  <artifactId>slidetounlock</artifactId>
+  <version>0.1.1</version>
+</dependency>
+```
 
 
 License
@@ -38,4 +45,4 @@ License
     limitations under the License.
 
 
- [1]: http://jcenter.bintray.com/com/doring/slidetounlock/slidetounlock/0.1.0
+ [1]: http://jcenter.bintray.com/com/doring/slidetounlock/slidetounlock/0.1.1
