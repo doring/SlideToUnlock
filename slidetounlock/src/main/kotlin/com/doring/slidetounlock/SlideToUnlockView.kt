@@ -31,16 +31,14 @@ class SlideToUnlockView
 @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0)
 : View(context, attrs, defStyleAttr) {
 
-    // TODO change to customize available
-    private val DURATION_REWIND = 500L
-
     // TODO all these properties are need to invalidate this view when setter is called
     var text: String
     var thumbDrawable: Drawable? = null
     var thumbMargin: Int = 0
-    var isThumbPressed = false
     var progress = 0f
 
+    var isThumbPressed = false
+    var rewindDurationMillis: Long
     var onSlideStateChangedListener: OnSlideStateChangedListener? = null
 
     private val textPaint: Paint
@@ -52,13 +50,8 @@ class SlideToUnlockView
     private val isUnlockAcceptable: Boolean
         get() = progress > 0.99f
 
-    // TODO interface simplify
     interface OnSlideStateChangedListener {
-        fun onSlideStateChanged(pressed: Boolean, progress: Float) {
-        }
-
-        fun onSlideUnlocked() {
-        }
+        fun onSlideStateChanged(unlocked: Boolean, thumbPressed: Boolean, progress: Float)
     }
 
     init {
@@ -76,6 +69,7 @@ class SlideToUnlockView
             // TODO color state list
             textColor = ta.getColor(R.styleable.SlideToUnlockView_textColor, Color.WHITE)
             textSize = ta.getDimension(R.styleable.SlideToUnlockView_textSize, textSize)
+            rewindDurationMillis = ta.getDimension(R.styleable.SlideToUnlockView_rewindDurationMillis, 500L.toFloat()) as Long
         } finally {
             ta.recycle()
         }
@@ -130,10 +124,6 @@ class SlideToUnlockView
 
         thumbDrawable?.bounds = thumbRect
         thumbDrawable?.draw(canvas)
-
-        post {
-            onSlideStateChangedListener?.onSlideStateChanged(true, progress)
-        }
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
@@ -149,9 +139,7 @@ class SlideToUnlockView
             }
             MotionEvent.ACTION_UP -> {
                 isThumbPressed = false
-                if (isUnlockAcceptable) {
-                    onSlideStateChangedListener?.onSlideUnlocked()
-                } else {
+                if (!isUnlockAcceptable) {
                     startRewind()
                 }
             }
@@ -171,13 +159,15 @@ class SlideToUnlockView
             }
         }
 
+        onSlideStateChangedListener?.onSlideStateChanged(isUnlockAcceptable, true, progress)
+
         return isThumbPressed
     }
 
     private fun startRewind() {
         ValueAnimator.ofInt(thumbRect.left, thumbBaseRect.left)
                 .apply {
-                    duration = (DURATION_REWIND * progress).toLong()
+                    duration = (rewindDurationMillis * progress).toLong()
                     interpolator = DecelerateInterpolator()
                     addUpdateListener {
                         if (isThumbPressed) {

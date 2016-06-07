@@ -5,6 +5,30 @@ repositories {
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'slide-to-unlock'
+
+    publishedGroupId = 'com.doring.slidetounlock'
+    libraryName = 'SlideToUnlock'
+    artifact = 'slidetounlock'
+
+    libraryDescription = 'Provide simple view for slide to unlock mechanism'
+
+    siteUrl = 'https://github.com/doring/SlideToUnlock'
+    gitUrl = 'https://github.com/doring/SlideToUnlock.git'
+
+    libraryVersion = '0.1.0'
+
+    developerId = 'doring'
+    developerName = 'jinwoo An'
+    developerEmail = 'imjin3j@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
@@ -29,3 +53,6 @@ android {
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
+
+apply from: 'https://raw.githubusercontent.com/doring/JCenter/master/bintray_v1.gradle'
+apply from: 'https://raw.githubusercontent.com/doring/JCenter/master/install_v1.gradle'
